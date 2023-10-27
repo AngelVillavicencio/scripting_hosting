@@ -27,33 +27,7 @@
                 var numeroAleatorio = Math.random();
                 var identificadorUnico = Math.floor(numeroAleatorio * 1000000); // Ajusta el rango según tus necesidades
                 return identificadorUnico.toString();
-            },
-            saveOneStep: function (user, url) {
-                //addDoc(collection(db, user), { url });
-                var data = {
-                    id: user,
-                    url: url
-                };
-
-                fetch('http://localhost:3000/agregarRegistro', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then(function (response) {
-                        if (response.ok) {
-                            console.log('Registro agregado correctamente.');
-                        } else {
-                            console.error('Error al agregar el registro.');
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error('Error al realizar la solicitud POST:', error);
-                    });
             }
-
         },
         run: function () {
 
