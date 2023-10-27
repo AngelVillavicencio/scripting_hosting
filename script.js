@@ -56,18 +56,45 @@
 
         },
         run: function () {
-            console.log("mundo")
+
             setTimeout(function () {
-                console.log("running...")
-                var cookie = me.fn.getCookie("cookie_newusers")
-                if (!cookie) {
-                    var id_unique = me.fn.generarIdentificadorUnico()
-                    me.fn.setCookie('cookie_newusers', id_unique, 30);
+                console.log("running script firebase")
+                const firebaseConfig = {
+                    apiKey: "AIzaSyABTJUPhyN-f4arqjgK9tLUtRTmv-BLjyo",
+                    authDomain: "chat-clone-gpt.firebaseapp.com",
+                    projectId: "chat-clone-gpt",
+                    storageBucket: "chat-clone-gpt.appspot.com",
+                    messagingSenderId: "777240212975",
+                    appId: "1:777240212975:web:128dfee625e88b19e2b21a"
+                };
+
+                firebase.initializeApp(firebaseConfig);
+
+                // Obtiene una instancia de Firestore
+                const firestore = firebase.firestore();
+
+                // Datos que deseas guardar en Firestore
+                const dataToSave = {
+                    nombre: 'Ejemplo',
+                    edad: 30,
+                    email: 'ejemplo@example.com',
+                };
+
+                // Función para guardar datos en Firestore
+                function saveDataToFirestore() {
+                    firestore.collection('nombreDeTuColeccion').add(dataToSave)
+                        .then((docRef) => {
+                            console.log('Documento guardado con ID:', docRef.id);
+                        })
+                        .catch((error) => {
+                            console.error('Error al guardar datos:', error);
+                        });
                 }
 
-                me.fn.saveOneStep(cookie, window.location.pathname)
+                // Llama a la función para guardar datos en Firestore
+                saveDataToFirestore();
 
-            }, 2000);
+            }, 3000);
         }
     }
     return me;
