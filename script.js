@@ -1,8 +1,24 @@
+// Asegúrate de cargar Firebase antes de ejecutar el código
 (function () {
-    console.log("running... script !!")
+    console.log("starting script..  !!")
 })();
 
+// Importa Firebase y Firestore
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+
+// Luego, ejecuta el código cuando Firebase se haya cargado
+initializeApp({
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_AUTH_DOMAIN",
+    projectId: "TU_PROJECT_ID",
+    storageBucket: "TU_STORAGE_BUCKET",
+    messagingSenderId: "TU_MESSAGING_SENDER_ID",
+    appId: "TU_APP_ID"
+});
+
 (function () {
+
     var me = {
         name: 'script automation',
         data: {},
@@ -30,22 +46,11 @@
             }
         },
         run: function () {
-
             setTimeout(function () {
-                console.log("running script firebase")
-                const firebaseConfig = {
-                    apiKey: "AIzaSyABTJUPhyN-f4arqjgK9tLUtRTmv-BLjyo",
-                    authDomain: "chat-clone-gpt.firebaseapp.com",
-                    projectId: "chat-clone-gpt",
-                    storageBucket: "chat-clone-gpt.appspot.com",
-                    messagingSenderId: "777240212975",
-                    appId: "1:777240212975:web:128dfee625e88b19e2b21a"
-                };
-
-                firebase.initializeApp(firebaseConfig);
+                console.log("running script firebase");
 
                 // Obtiene una instancia de Firestore
-                const firestore = firebase.firestore();
+                const firestore = getFirestore();
 
                 // Datos que deseas guardar en Firestore
                 const dataToSave = {
@@ -55,21 +60,20 @@
                 };
 
                 // Función para guardar datos en Firestore
-                function saveDataToFirestore() {
-                    firestore.collection('nombreDeTuColeccion').add(dataToSave)
-                        .then((docRef) => {
-                            console.log('Documento guardado con ID:', docRef.id);
-                        })
-                        .catch((error) => {
-                            console.error('Error al guardar datos:', error);
-                        });
+                async function saveDataToFirestore() {
+                    try {
+                        const docRef = await addDoc(collection(firestore, 'nombreDeTuColeccion'), dataToSave);
+                        console.log('Documento guardado con ID:', docRef.id);
+                    } catch (error) {
+                        console.error('Error al guardar datos:', error);
+                    }
                 }
 
                 // Llama a la función para guardar datos en Firestore
                 saveDataToFirestore();
-
             }, 3000);
         }
     }
+
     return me;
 })().run();
