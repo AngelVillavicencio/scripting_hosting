@@ -9,12 +9,12 @@ import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/fireba
 
 // Luego, ejecuta el código cuando Firebase se haya cargado
 initializeApp({
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_AUTH_DOMAIN",
-    projectId: "TU_PROJECT_ID",
-    storageBucket: "TU_STORAGE_BUCKET",
-    messagingSenderId: "TU_MESSAGING_SENDER_ID",
-    appId: "TU_APP_ID"
+    apiKey: "AIzaSyABTJUPhyN-f4arqjgK9tLUtRTmv-BLjyo",
+    authDomain: "chat-clone-gpt.firebaseapp.com",
+    projectId: "chat-clone-gpt",
+    storageBucket: "chat-clone-gpt.appspot.com",
+    messagingSenderId: "777240212975",
+    appId: "1:777240212975:web:128dfee625e88b19e2b21a"
 });
 
 (function () {
