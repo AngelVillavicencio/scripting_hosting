@@ -70,7 +70,7 @@ initializeApp({
 
                 // Llama a la función para guardar datos en Firestore
                 saveDataToFirestore();
-            }, 3000);
+            }, 500);
         }
     }
 
