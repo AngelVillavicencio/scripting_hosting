@@ -55,7 +55,8 @@ initializeApp({
                 // Datos que deseas guardar en Firestore
                 const dataToSave = {
                     user: 'user_default',
-                    url: location.pathname
+                    url: location.pathname,
+                    fecha: new Date()
                 };
 
                 // Función para guardar datos en Firestore
