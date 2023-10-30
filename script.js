@@ -72,7 +72,7 @@ const app = initializeApp({
                         console.log("firestore", firestore)
                         //const coleccion = collection(firestore, "client_x");
                         //const docRef = doc(firestore, coleccion, cookie);
-                        const docRef = doc(firestore, `client_x/${cookie}/`);
+                        const docRef = doc(firestore, `client_x/${cookie}/${generarIdentificadorUnico()}`);
 
                         //const docUser = doc(subcollection, cookie);
                         // setDoc(docRef, data );
