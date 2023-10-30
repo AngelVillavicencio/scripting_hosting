@@ -86,7 +86,7 @@ const app = initializeApp({
 
                         // Accede a la subcolección "historial" y agrega un nuevo documento
                         const collectionRef = collection(usuarioRef, "historial");
-                        const docRef = await addDoc(collectionRef, nuevoDocumentoData);
+                        const docRef = await addDoc(collectionRef, data);
 
                         // Agrega un nuevo documento a la subcolección "Pedidos"
                         /*collectionRef.add(data)
