@@ -68,18 +68,36 @@ const app = initializeApp({
                 async function saveDataToFirestore() {
                     try {
 
-                        const firestore = getFirestore(app);
-                        console.log("firestore", firestore)
+                        //const firestore = getFirestore(app);
+                        //console.log("firestore", firestore)
                         //const coleccion = collection(firestore, "client_x");
                         //const docRef = doc(firestore, coleccion, cookie);
-                        const docRef = collection(firestore, `client_x/${cookie}/}`);
+                        //const docRef = collection(firestore, `client_x/${cookie}/}`);
 
                         //const docUser = doc(subcollection, cookie);
                         // setDoc(docRef, data );
                         //await setDoc(doc(firestore, "client_x", cookie), data);
-                        await addDoc(docRef, data);
-                        //const docRef = await addDoc(collection(firestore, cookie), data);
-                        console.log('Documento guardado con ID:', docRef.id, data);
+                        //await addDoc(docRef, data);
+                        //const docRef = await addDoc(collection(firestore, cookie), data)
+                        //console.log('Documento guardado con ID:', docRef.id, data);
+                        // Obtén una referencia al documento de usuario
+                        const usuarioRef = collection("client_x").doc(cookie);
+
+                        // Accede a la subcolección "Pedidos" y agrega un nuevo documento
+                        const collectionRef = usuarioRef.collection("historial");
+
+                        // Agrega un nuevo documento a la subcolección "Pedidos"
+                        collectionRef.add(data)
+                            .then((docRef) => {
+                                console.log("Documento de pedido agregado con ID:", docRef.id);
+                            })
+                            .catch((error) => {
+                                console.error("Error al agregar el documento de pedido:", error);
+                            });
+
+
+
+
                     } catch (error) {
                         console.error('Error al guardar datos:', error);
                     }
