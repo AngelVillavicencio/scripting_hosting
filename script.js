@@ -5,7 +5,7 @@
 
 // Importa Firebase y Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc ,doc, setDoc} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 
 // Luego, ejecuta el código cuando Firebase se haya cargado
 initializeApp({
