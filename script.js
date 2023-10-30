@@ -68,7 +68,11 @@ initializeApp({
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        const docRef = await addDoc(collection(firestore, cookie), data);
+                        const docRef = doc(db, 'client_x', cookie);
+                        setDoc(docRef, data );
+
+
+                        //const docRef = await addDoc(collection(firestore, cookie), data);
                         console.log('Documento guardado con ID:', docRef.id, data);
                     } catch (error) {
                         console.error('Error al guardar datos:', error);
