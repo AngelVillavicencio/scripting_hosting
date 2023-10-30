@@ -81,21 +81,23 @@ const app = initializeApp({
                         //const docRef = await addDoc(collection(firestore, cookie), data)
                         //console.log('Documento guardado con ID:', docRef.id, data);
                         // Obtén una referencia al documento de usuario
-                        const usuarioRef = collection(firestore, "client_x").doc(cookie);
 
-                        // Accede a la subcolección "Pedidos" y agrega un nuevo documento
-                        const collectionRef = usuarioRef.collection(firestore, "historial");
+                        const usuarioRef = doc(firestore, "client_x", cookie);
+
+                        // Accede a la subcolección "historial" y agrega un nuevo documento
+                        const collectionRef = collection(usuarioRef, "historial");
+                        const docRef = await addDoc(collectionRef, nuevoDocumentoData);
 
                         // Agrega un nuevo documento a la subcolección "Pedidos"
-                        collectionRef.add(data)
+                        /*collectionRef.add(data)
                             .then((docRef) => {
                                 console.log("Documento de pedido agregado con ID:", docRef.id);
                             })
                             .catch((error) => {
                                 console.error("Error al agregar el documento de pedido:", error);
-                            });
+                            });*/
 
-
+                        console.log("Documento de pedido agregado con ID:", docRef.id);
 
 
                     } catch (error) {
