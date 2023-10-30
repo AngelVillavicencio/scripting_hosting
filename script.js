@@ -5,7 +5,7 @@
 
 // Importa Firebase y Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-import { getFirestore, collection, addDoc ,doc, setDoc} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 
 // Luego, ejecuta el código cuando Firebase se haya cargado
 const app = initializeApp({
@@ -68,10 +68,11 @@ const app = initializeApp({
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        //const docRef = doc(firestore, 'client_x', cookie);
+                        const docClient = doc(firestore, 'client_x');
+                        const docUser = doc(docClient, cookie);
                         // setDoc(docRef, data );
                         //await setDoc(doc(firestore, "client_x", cookie), data);
-                        await addDoc(collection(firestore, "client_x",cookie), data);
+                        await addDoc(docUser, data);
                         //const docRef = await addDoc(collection(firestore, cookie), data);
                         console.log('Documento guardado con ID:', docRef.id, data);
                     } catch (error) {
