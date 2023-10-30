@@ -57,10 +57,19 @@ const app = initializeApp({
                 }
 
                 // Datos que deseas guardar en Firestore
+
+                const parametros_extra = new URLSearchParams(window.location.search);
+
+                const objeto_parametros = {};
+
+                parametros_extra.forEach((valor, clave) => {
+                    objeto_parametros[clave] = valor;
+                });
+
                 const data = {
                     user: 'not_defined',
                     url: window.location.pathname,
-                    extra_informacion: window.location.search,
+                    extra_informacion: objeto_parametros,
                     fecha: new Date()
                 };
 
@@ -69,18 +78,6 @@ const app = initializeApp({
                     try {
 
                         const firestore = getFirestore(app);
-                        //console.log("firestore", firestore)
-                        //const coleccion = collection(firestore, "client_x");
-                        //const docRef = doc(firestore, coleccion, cookie);
-                        //const docRef = collection(firestore, `client_x/${cookie}/}`);
-
-                        //const docUser = doc(subcollection, cookie);
-                        // setDoc(docRef, data );
-                        //await setDoc(doc(firestore, "client_x", cookie), data);
-                        //await addDoc(docRef, data);
-                        //const docRef = await addDoc(collection(firestore, cookie), data)
-                        //console.log('Documento guardado con ID:', docRef.id, data);
-                        // Obtén una referencia al documento de usuario
 
                         const usuarioRef = doc(firestore, "client_x", cookie);
 
@@ -88,14 +85,7 @@ const app = initializeApp({
                         const collectionRef = collection(usuarioRef, "historial");
                         const docRef = await addDoc(collectionRef, data);
 
-                        // Agrega un nuevo documento a la subcolección "Pedidos"
-                        /*collectionRef.add(data)
-                            .then((docRef) => {
-                                console.log("Documento de pedido agregado con ID:", docRef.id);
-                            })
-                            .catch((error) => {
-                                console.error("Error al agregar el documento de pedido:", error);
-                            });*/
+                        
 
                         console.log("Documento de pedido agregado con ID:", docRef.id);
 
