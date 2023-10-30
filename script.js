@@ -68,7 +68,7 @@ const app = initializeApp({
                 async function saveDataToFirestore() {
                     try {
 
-                        //const firestore = getFirestore(app);
+                        const firestore = getFirestore(app);
                         //console.log("firestore", firestore)
                         //const coleccion = collection(firestore, "client_x");
                         //const docRef = doc(firestore, coleccion, cookie);
@@ -81,10 +81,10 @@ const app = initializeApp({
                         //const docRef = await addDoc(collection(firestore, cookie), data)
                         //console.log('Documento guardado con ID:', docRef.id, data);
                         // Obtén una referencia al documento de usuario
-                        const usuarioRef = collection("client_x").doc(cookie);
+                        const usuarioRef = collection(firestore, "client_x").doc(cookie);
 
                         // Accede a la subcolección "Pedidos" y agrega un nuevo documento
-                        const collectionRef = usuarioRef.collection("historial");
+                        const collectionRef = usuarioRef.collection(firestore, "historial");
 
                         // Agrega un nuevo documento a la subcolección "Pedidos"
                         collectionRef.add(data)
