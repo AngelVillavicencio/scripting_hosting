@@ -8,7 +8,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebas
 import { getFirestore, collection, addDoc ,doc, setDoc} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 
 // Luego, ejecuta el código cuando Firebase se haya cargado
-initializeApp({
+const app = initializeApp({
     apiKey: "AIzaSyABTJUPhyN-f4arqjgK9tLUtRTmv-BLjyo",
     authDomain: "chat-clone-gpt.firebaseapp.com",
     projectId: "chat-clone-gpt",
@@ -49,7 +49,7 @@ initializeApp({
             setTimeout(function () {
                 console.log("running script firebase");
                 // Obtiene una instancia de Firestore
-                const firestore = getFirestore();
+                const firestore = getFirestore(app);
 
                 var cookie = me.fn.getCookie("cookie_newusers")
                 if (!cookie) {
@@ -68,7 +68,7 @@ initializeApp({
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        const docRef = doc(db, 'client_x', cookie);
+                        const docRef = doc(firestore, 'client_x', cookie);
                         setDoc(docRef, data );
 
 
