@@ -68,10 +68,10 @@ const app = initializeApp({
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        const docRef = doc(firestore, 'client_x', cookie);
-                        setDoc(docRef, data );
-
-
+                        //const docRef = doc(firestore, 'client_x', cookie);
+                        // setDoc(docRef, data );
+                        //await setDoc(doc(firestore, "client_x", cookie), data);
+                        await addDoc(collection(firestore, "client_x",cookie), data);
                         //const docRef = await addDoc(collection(firestore, cookie), data);
                         console.log('Documento guardado con ID:', docRef.id, data);
                     } catch (error) {
