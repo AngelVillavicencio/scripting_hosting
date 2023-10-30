@@ -41,29 +41,35 @@ initializeApp({
             },
             generarIdentificadorUnico: function () {
                 var numeroAleatorio = Math.random();
-                var identificadorUnico = Math.floor(numeroAleatorio * 1000000); // Ajusta el rango según tus necesidades
+                var identificadorUnico = Math.floor(numeroAleatorio * 1000000) + Date.now(); // Ajusta el rango según tus necesidades
                 return identificadorUnico.toString();
             }
         },
         run: function () {
             setTimeout(function () {
                 console.log("running script firebase");
-
                 // Obtiene una instancia de Firestore
                 const firestore = getFirestore();
 
+                var cookie = me.fn.getCookie("cookie_newusers")
+                if (!cookie) {
+                    cookie = me.fn.generarIdentificadorUnico()
+                    me.fn.setCookie('cookie_newusers', cookie, 30);
+                }
+
                 // Datos que deseas guardar en Firestore
-                const dataToSave = {
-                    user: 'user_default',
-                    url: location.pathname,
+                const data = {
+                    user: 'not_defined',
+                    url: window.location.pathname,
+                    extra_informacion: window.location.search,
                     fecha: new Date()
                 };
 
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        const docRef = await addDoc(collection(firestore, 'user_default'), dataToSave);
-                        console.log('Documento guardado con ID:', docRef.id);
+                        const docRef = await addDoc(collection(firestore, cookie), data);
+                        console.log('Documento guardado con ID:', docRef.id, data);
                     } catch (error) {
                         console.error('Error al guardar datos:', error);
                     }
