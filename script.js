@@ -68,7 +68,7 @@ const app = initializeApp({
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        const coleccion = firestore.collection(client_x);
+                        const coleccion = firestore.collection("client_x");
                         const docRef = doc(coleccion,cookie);
                         
                         //const docUser = doc(subcollection, cookie);
