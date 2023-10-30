@@ -69,7 +69,8 @@ const app = initializeApp({
                 async function saveDataToFirestore() {
                     try {
                         const docClient = doc(firestore, 'client_x');
-                        const docUser = doc(docClient, cookie);
+                        const subcollection = docClient.collection(cookie);
+                        const docUser = doc(subcollection, cookie);
                         // setDoc(docRef, data );
                         //await setDoc(doc(firestore, "client_x", cookie), data);
                         await addDoc(docUser, data);
