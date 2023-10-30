@@ -70,8 +70,9 @@ const app = initializeApp({
 
                         const firestore = getFirestore(app);
                         console.log("firestore", firestore)
-                        const coleccion = collection(firestore, "client_x");
-                        const docRef = doc(firestore, coleccion, cookie);
+                        //const coleccion = collection(firestore, "client_x");
+                        //const docRef = doc(firestore, coleccion, cookie);
+                        const docRef = doc(firestore, `client_x/${cookie}/`);
 
                         //const docUser = doc(subcollection, cookie);
                         // setDoc(docRef, data );
