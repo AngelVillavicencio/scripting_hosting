@@ -67,10 +67,8 @@ const app = initializeApp({
                 });
 
                 const data = {
-                    user: 'not_defined',
                     url: window.location.pathname,
-                    extra_informacion: objeto_parametros,
-                    fecha: new Date()
+                    extra_informacion: objeto_parametros
                 };
 
                 // Función para guardar datos en Firestore
