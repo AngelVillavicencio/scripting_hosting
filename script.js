@@ -68,26 +68,21 @@ const app = initializeApp({
 
                 const data = {
                     url: window.location.pathname,
-                    extra_informacion: objeto_parametros
+                    extra_informacion: objeto_parametros,
+                    date: new Date()
                 };
 
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-
                         const firestore = getFirestore(app);
-
                         const usuarioRef = doc(firestore, "client_x", cookie);
 
                         // Accede a la subcolección "historial" y agrega un nuevo documento
                         const collectionRef = collection(usuarioRef, "historial");
                         const docRef = await addDoc(collectionRef, data);
 
-                        
-
                         console.log("Documento de pedido agregado con ID:", docRef.id);
-
-
                     } catch (error) {
                         console.error('Error al guardar datos:', error);
                     }
