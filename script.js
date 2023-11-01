@@ -122,7 +122,7 @@ const app = initializeApp({
 
                         debugger;
                         const firestore = getFirestore(app);
-                        const usuarioRef = doc(firestore, "client_x", cookie.id.toString());
+                        const usuarioRef = doc(firestore, "client_x", cookie.id);
 
                         // Accede a la subcolección "historial" y agrega un nuevo documento
                         const collectionRef = collection(usuarioRef, "historial");
