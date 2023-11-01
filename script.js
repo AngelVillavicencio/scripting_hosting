@@ -45,7 +45,7 @@ const app = initializeApp({
                 //return identificadorUnico.toString();
 
                 const userId = {
-                    id: identificadorUnico,
+                    id: identificadorUnico.toString(),
                     campaign_source: ""
                 }
 
@@ -122,7 +122,7 @@ const app = initializeApp({
 
                         debugger;
                         const firestore = getFirestore(app);
-                        const usuarioRef = doc(firestore, "client_x", cookie.id);
+                        const usuarioRef = doc(firestore, "client_x", cookie.id.toString());
 
                         // Accede a la subcolección "historial" y agrega un nuevo documento
                         const collectionRef = collection(usuarioRef, "historial");
