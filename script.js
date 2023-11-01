@@ -60,7 +60,7 @@ const app = initializeApp({
 
                 var cookie = me.fn.getCookie("cookie_newusers")
                 cookie = JSON.parse(cookie)
-                if (typeof (cookie) == 'number') cookie == null
+                if (typeof (cookie) == 'number') cookie = null
                 if (!cookie) {
                     cookie = me.fn.generarUserCookie()
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
