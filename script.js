@@ -60,6 +60,7 @@ const app = initializeApp({
 
                 var cookie = me.fn.getCookie("cookie_newusers")
                 cookie = JSON.parse(cookie)
+                if (typeof (cookie)) cookie == null
                 if (!cookie) {
                     cookie = me.fn.generarUserCookie()
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
@@ -118,7 +119,6 @@ const app = initializeApp({
                     try {
                         var cookie = me.fn.getCookie("cookie_newusers")
                         cookie = JSON.parse(cookie)
-                        debugger;
                         const firestore = getFirestore(app);
                         const usuarioRef = doc(firestore, "client_x", cookie.id);
 
