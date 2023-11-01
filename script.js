@@ -81,6 +81,7 @@ const app = initializeApp({
                 if (!campaign_source) {
                     cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
                     campaign_source = cookie.campaign_source
+                    campaign_source = ""
                 } else {
                     cookie.campaign_source = campaign_source
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
@@ -91,6 +92,7 @@ const app = initializeApp({
                 if (!medium_source) {
                     cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
                     medium_source = cookie.medium_source
+                    medium_source = ""
                 } else {
                     cookie.medium_source = medium_source
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
@@ -101,6 +103,7 @@ const app = initializeApp({
                 if (!source_source) {
                     cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
                     source_source = cookie.source_source
+                    source_source = ""
                 } else {
                     cookie.source_source = source_source
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
@@ -122,7 +125,7 @@ const app = initializeApp({
 
                         debugger;
                         const firestore = getFirestore(app);
-                        const usuarioRef = doc(firestore, "client_x", cookie.id);
+                        const usuarioRef = doc(firestore, "client_x", cookie.id.toString());
 
                         // Accede a la subcolección "historial" y agrega un nuevo documento
                         const collectionRef = collection(usuarioRef, "historial");
