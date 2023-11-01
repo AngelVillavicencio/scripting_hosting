@@ -116,6 +116,9 @@ const app = initializeApp({
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
+                        var cookie = me.fn.getCookie("cookie_newusers")
+                        cookie = JSON.parse(cookie)
+
                         const firestore = getFirestore(app);
                         const usuarioRef = doc(firestore, "client_x", cookie.id);
 
