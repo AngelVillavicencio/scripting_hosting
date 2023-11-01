@@ -118,7 +118,7 @@ const app = initializeApp({
                     try {
                         var cookie = me.fn.getCookie("cookie_newusers")
                         cookie = JSON.parse(cookie)
-
+                        debugger;
                         const firestore = getFirestore(app);
                         const usuarioRef = doc(firestore, "client_x", cookie.id);
 
