@@ -85,7 +85,7 @@ const app = initializeApp({
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
                 }
 
-                const medium_source = objeto_parametros["utm_campaign"]
+                const medium_source = objeto_parametros["utm_medium"]
 
                 if (!medium_source) {
                     cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
@@ -95,7 +95,7 @@ const app = initializeApp({
                     me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
                 }
 
-                const source_source = objeto_parametros["utm_campaign"]
+                const source_source = objeto_parametros["utm_source"]
 
                 if (!source_source) {
                     cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
