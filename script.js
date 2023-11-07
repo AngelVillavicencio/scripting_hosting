@@ -133,7 +133,7 @@ const app = initializeApp({
                         const collectionRef = collection(usuarioRef, "historial");
                         const docRef = await addDoc(collectionRef, data);
 
-                        console.log("Documento de pedido agregado con ID:", docRef.id, cookie);
+                        console.log("Documento ID:", docRef.id, cookie);
                     } catch (error) {
                         console.error('Error al guardar datos:', error);
                     }
