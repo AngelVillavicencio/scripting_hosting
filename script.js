@@ -130,7 +130,7 @@ const app = initializeApp({
                         date: new Date()
                     };
                     // Accede a la subcolección "historial" y agrega un nuevo documento
-                    const collectionRef = firestore.collection("cliente_shopify");
+                    const collectionRef = collection(firestore,"cliente_shopify");
                     await addDoc(collectionRef, data);
 
                     console.log("Envio de data:", data);
