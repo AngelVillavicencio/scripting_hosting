@@ -5,7 +5,7 @@
 
 // Importa Firebase y Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-import { getFirestore, collection, addDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+import { getFirestore, addDoc, doc, collection, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 
 // Luego, ejecuta el código cuando Firebase se haya cargado
 const app = initializeApp({
@@ -39,46 +39,106 @@ const app = initializeApp({
                 });
                 return res;
             },
-            generarIdentificadorUnico: function () {
+            generarUserCookie: function () {
                 var numeroAleatorio = Math.random();
                 var identificadorUnico = Math.floor(numeroAleatorio * 1000000) + Date.now(); // Ajusta el rango según tus necesidades
-                return identificadorUnico.toString();
+                //return identificadorUnico.toString();
+
+                const userId = {
+                    id: identificadorUnico.toString(),
+                    campaign_source: ""
+                }
+
+                return userId
+
             }
         },
         run: function () {
             setTimeout(function () {
                 console.log("running script firebase");
                 // Obtiene una instancia de Firestore
-                const firestore = getFirestore(app);
 
                 var cookie = me.fn.getCookie("cookie_newusers")
+                cookie = JSON.parse(cookie)
+                if (typeof (cookie) == 'number') cookie = null
                 if (!cookie) {
-                    cookie = me.fn.generarIdentificadorUnico()
-                    me.fn.setCookie('cookie_newusers', cookie, 30);
+                    cookie = me.fn.generarUserCookie()
+                    me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
                 }
 
                 // Datos que deseas guardar en Firestore
+
+                const parametros_extra = new URLSearchParams(window.location.search);
+                const objeto_parametros = {};
+                parametros_extra.forEach((valor, clave) => {
+                    objeto_parametros[clave] = valor;
+                });
+
+                //verificar la campaign
+
+                let campaign_source = objeto_parametros["utm_campaign"]
+
+                if (!campaign_source) {
+                    cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
+                    campaign_source = cookie.campaign_source
+                    if (!campaign_source)
+                        campaign_source = ""
+                } else {
+                    cookie.campaign_source = campaign_source
+                    me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
+                }
+
+                let medium_source = objeto_parametros["utm_medium"]
+
+                if (!medium_source) {
+                    cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
+                    medium_source = cookie.medium_source
+                    if (!medium_source)
+                        medium_source = ""
+                } else {
+                    cookie.medium_source = medium_source
+                    me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
+                }
+
+                let source_source = objeto_parametros["utm_source"]
+
+                if (!source_source) {
+                    cookie = JSON.parse(me.fn.getCookie("cookie_newusers"))
+                    source_source = cookie.source_source
+                    if (!source_source)
+                        source_source = ""
+                } else {
+                    cookie.source_source = source_source
+                    me.fn.setCookie('cookie_newusers', JSON.stringify(cookie), 30);
+                }
+
                 const data = {
-                    user: 'not_defined',
                     url: window.location.pathname,
-                    extra_informacion: window.location.search,
-                    fecha: new Date()
+                    campaign_source: campaign_source,
+                    medium_source: medium_source,
+                    source_source: source_source,
+                    date: new Date()
                 };
 
                 // Función para guardar datos en Firestore
                 async function saveDataToFirestore() {
                     try {
-                        const docClient = doc(firestore, 'client_x');
-                        const docUser = doc(docClient, cookie);
-                        // setDoc(docRef, data );
-                        //await setDoc(doc(firestore, "client_x", cookie), data);
-                        await addDoc(docUser, data);
-                        //const docRef = await addDoc(collection(firestore, cookie), data);
-                        console.log('Documento guardado con ID:', docRef.id, data);
+                        var cookie = me.fn.getCookie("cookie_newusers")
+                        cookie = JSON.parse(cookie)
+
+                        const firestore = getFirestore(app);
+                        const usuarioRef = doc(firestore, "client_x", cookie.id.toString());
+
+                        // Accede a la subcolección "historial" y agrega un nuevo documento
+                        const collectionRef = collection(usuarioRef, "historial");
+                        const docRef = await addDoc(collectionRef, data);
+
+                        console.log("Documento de pedido agregado con ID:", docRef.id, cookie);
                     } catch (error) {
                         console.error('Error al guardar datos:', error);
                     }
                 }
+
 
                 // Llama a la función para guardar datos en Firestore
                 saveDataToFirestore();
