@@ -101,7 +101,7 @@ const app = initializeApp({
 
 
                     inputs_toSend.forEach(input_ => {
-                        if (input_.value != "")
+                        if (input_.value != "" && input_.placeholder != "")
                             informacion[input_.placeholder] = input_.value
                     })
 
