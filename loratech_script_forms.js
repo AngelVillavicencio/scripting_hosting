@@ -101,15 +101,13 @@ const app = initializeApp({
 
 
                     inputs.forEach(input => {
-
-                        informacion[input.name] = input.value
-
+                        informacion[input.placeholder] = input.value
                     })
 
 
                     // Llama a la función para guardar datos en Firestore
-                    console.log(informacion);
-                    //saveDataToFirestore(informacion);
+                    //console.log(informacion);
+                    saveDataToFirestore(informacion);
                 })
 
             })
