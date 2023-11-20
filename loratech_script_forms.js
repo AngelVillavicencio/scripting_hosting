@@ -77,7 +77,7 @@ const app = initializeApp({
                 }
             }
 
-            console.log("running script");
+            //console.log("running script");
             // Obtiene una instancia de Firestore
 
             var cookie = me.fn.getCookie("cookie_newusers")
@@ -91,16 +91,16 @@ const app = initializeApp({
 
 
             //const botones = document.querySelectorAll('button[type="submit"]')
-            const formularios = document.querySelectorAll('form')
+            const inputs = document.querySelectorAll('input')
 
-            formularios.forEach(formulario => {
-                formulario.addEventListener("submit", (e) => {
+            inputs.forEach(input => {
+                input.addEventListener("change", (e) => {
                     let informacion = {}
 
-                    const inputs = document.querySelectorAll(".wpforms-field-large")
+                    const inputs_toSend = document.querySelectorAll("input")
 
 
-                    inputs.forEach(input => {
+                    inputs_toSend.forEach(input => {
                         informacion[input.placeholder] = input.value
                     })
 
