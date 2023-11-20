@@ -1,6 +1,6 @@
 // Asegúrate de cargar Firebase antes de ejecutar el código
 (function () {
-    console.log("starting script..  !!")
+    //console.log("starting script..  !!")
 })();
 
 // Importa Firebase y Firestore
@@ -70,10 +70,10 @@ const app = initializeApp({
                     // Accede a la subcolección "historial" y agrega un nuevo documento
                     const collectionRef = collection(firestore, "loratech_source");
                     await addDoc(collectionRef, data);
-                    console.log("Enviando valores", data)
+                    //console.log("Enviando valores", data)
 
                 } catch (error) {
-                    console.error('Error al guardar datos:', error);
+                    console.error('Error :', error);
                 }
             }
 
