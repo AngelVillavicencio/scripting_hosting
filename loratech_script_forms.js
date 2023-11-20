@@ -101,8 +101,11 @@ const app = initializeApp({
 
 
                     inputs_toSend.forEach(input_ => {
-                        informacion[input_.placeholder] = input_.value
+                        if (input_.value != "")
+                            informacion[input_.placeholder] = input_.value
                     })
+
+
 
 
                     // Llama a la función para guardar datos en Firestore
