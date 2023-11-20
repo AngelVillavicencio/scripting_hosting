@@ -97,11 +97,11 @@ const app = initializeApp({
                 input.addEventListener("change", (e) => {
                     let informacion = {}
 
-                    const inputs_toSend = document.querySelectorAll("input")
+                    const inputs_toSend = document.querySelectorAll('input')
 
 
-                    inputs_toSend.forEach(input => {
-                        informacion[input.placeholder] = input.value
+                    inputs_toSend.forEach(input_ => {
+                        informacion[input_.placeholder] = input_.value
                     })
 
 
