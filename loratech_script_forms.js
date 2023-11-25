@@ -396,7 +396,8 @@ const app = initializeApp({
                     '.info__form-inputtext[type="tel"]'
                 ).value;
 
-                var promoAcceptSpam = document.querySelector("#checkbox_spam");
+                var promoAcceptData = document.querySelector("#checkbox_data");
+
 
                 var empresa = document.querySelector(
                     '.info__form-inputtext[name="empresa"]'
@@ -419,7 +420,7 @@ const app = initializeApp({
                     email: correo,
                     first_name: nombre,
                     phone: telefono,
-                    double_optin: promoAcceptSpam.checked,
+                    double_optin: promoAcceptData.checked,
                     nombre_empresa: empresa,
                     registry_source: "welcome_popup",
                 },
@@ -957,5 +958,4 @@ const app = initializeApp({
 
     return me;
 })().run();
-
 
