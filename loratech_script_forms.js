@@ -1,6 +1,5 @@
 
 
-
 // Importa Firebase y Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
 import { getFirestore, addDoc, doc, collection, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
@@ -806,7 +805,7 @@ const app = initializeApp({
 
 
             .container_popup_info__subtitle{
-                font-size: 14px;
+                font-size: 16px;
                 line-height: 32px;
                 margin-bottom: 20px;
             }
