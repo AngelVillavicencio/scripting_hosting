@@ -137,7 +137,7 @@ const app = initializeApp({
               <span id="btn_close_modal" class="close">&times;</span>
               <div class="container_popup" id="content_modal_register">
                   <div class="container_popup_img">
-                      <img src="https://i.imgur.com/SyXVKFB.png"  />
+                      <img src="https://i.imgur.com/ManV1gH.png"  />
                   </div>
                   <div class="container_popup_info">
                         <p class="container_popup_info__title"> BIENVENIDO A COMSATEL </p>
