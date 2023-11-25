@@ -517,7 +517,7 @@ const app = initializeApp({
                 background: #D81F26;
                 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
                 border-radius: 32px;
-                font-family: "Varela", Sans-serif;
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 700;
                 font-size: 16px;
@@ -531,7 +531,7 @@ const app = initializeApp({
 
 
             .container_popup_info__title{
-                font-family: "Varela", Sans-serif
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 700;
                 font-size: 16px;
@@ -543,7 +543,7 @@ const app = initializeApp({
             }
 
             .container_popup_info__subtitle{
-                font-family: "Varela", Sans-serif
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 700;
                 font-size: 12px;
@@ -555,7 +555,7 @@ const app = initializeApp({
             }
 
             .container_popup_info__texto{
-                font-family: "Varela", Sans-serif
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 700;
                 font-size: 10px;
