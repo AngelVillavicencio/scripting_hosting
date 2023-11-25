@@ -1,7 +1,5 @@
 // Asegúrate de cargar Firebase antes de ejecutar el código
-(function () {
-    console.log("starting script..  !!")
-})();
+
 
 // Importa Firebase y Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
@@ -120,7 +118,7 @@ const app = initializeApp({
             <div class="atm-terms-content">
               <div>
                 <p>
-                  Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                  Al proporcionar sus datos personales, usted otorga su consentimiento para que los mismos sean tratados conforme a los siguientes términos y condiciones. Sus datos serán utilizados exclusivamente para los fines específicos de la recopilación, garantizándose su confidencialidad y seguridad. No se cederán a terceros sin su consentimiento, salvo obligación legal. Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos. Mantendremos sus datos el tiempo necesario y notificaremos cualquier cambio en estos términos. Este servicio no está destinado a menores de edad. Al proporcionar sus datos, acepta estos términos de manera voluntaria.
                 </p>
               </div>
               <div class="atm-terms-content__footer"">
@@ -143,21 +141,22 @@ const app = initializeApp({
                       <img src="https://i.imgur.com/bXpaDeb.png"  />
                   </div>
                   <div class="container_popup_info">
-                      <p class="container_popup_info__title">¡Entérate antes que nadie <br />
-                          de nuestras promociones!
+                      <p class="container_popup_info__title"> BIENVENIDO A COMSATEL <br />
+                      Líderes en rastreo vehicular y gestión de flotas <br />
+                          Registra tus datos y nos contáctaremos
                       </p>
                       <div class="container_popup_info__form">
                           <div>
-                            <input placeholder="Ingresa tu nombre" type="text" name="nombre" class="info__form-inputtext" />
+                            <input placeholder="Nombre" type="text" name="nombre" class="info__form-inputtext" />
                           </div>
                           <div>
-                            <input placeholder="Ingresa tu empresa" type="text" name="empresa" class="info__form-inputtext" />
+                            <input placeholder="Empresa" type="text" name="empresa" class="info__form-inputtext" />
                           </div>
                           <div>
-                            <input placeholder="Ingresa tu correo corporativo" type="email" class="info__form-inputtext" />
+                            <input placeholder="Correo corporativo" type="email" class="info__form-inputtext" />
                           </div>
                           <div>
-                            <input placeholder="Ingresa tu número de teléfono" type="tel" class="info__form-inputtext" />
+                            <input placeholder="Número de teléfono" type="tel" class="info__form-inputtext" />
                           </div>
                           <div class="info__form-inputcheck">
                               <input type="checkbox" class="checkbox_promo" id="checkbox_data" />
@@ -177,7 +176,7 @@ const app = initializeApp({
                   <div class="container_popup_info">
                       <p class="container_popup_info__title">¡Gracias por registrarte!</p>
                       <p class="text_promos_thank">
-                          Recibirás un mensaje de nuestro equipo
+                        Nuestros ejecutivos se contactarán contigo
                       </p>
                       <div class="info__form-inputbutton">
                           <button id="btn_close2_modal">Cerrar</button>
@@ -234,10 +233,10 @@ const app = initializeApp({
                     // Accede a la subcolección "historial" y agrega un nuevo documento
                     const collectionRef = collection(firestore, name_collection);
                     await addDoc(collectionRef, data);
-                    console.log("Enviando valores", data)
+                    //console.log("Enviando valores", data)
 
                 } catch (error) {
-                    console.error('Error al guardar datos:', error);
+                    //console.error('Error al guardar datos:', error);
                 }
             },
             display: () => {
@@ -865,10 +864,10 @@ const app = initializeApp({
                     // Accede a la subcolección "historial" y agrega un nuevo documento
                     const collectionRef = collection(firestore, "loratech_source");
                     await addDoc(collectionRef, data);
-                    console.log("Enviando valores", data)
+                    //console.log("Enviando valores", data)
 
                 } catch (error) {
-                    console.error('Error al guardar datos:', error);
+                    //console.error('Error al guardar datos:', error);
                 }
             }
 
