@@ -144,7 +144,7 @@ const app = initializeApp({
                         <p class="container_popup_info__subtitle">
                             Líderes en rastreo vehicular y gestión de flotas
                         </p>
-                        <p class="container_popup_info__texto">
+                        <p class="container_popup_info__subtitle">
                             Registra tus datos y nos contáctaremos
                         </p>
 
@@ -813,7 +813,7 @@ const app = initializeApp({
             .container_popup_info__subtitle{
                 font-size: 16px;
                 line-height: 32px;
-                margin-bottom: 15px;
+                margin-bottom: 0px;
             }
 
 
