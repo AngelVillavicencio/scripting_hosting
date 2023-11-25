@@ -1,4 +1,3 @@
-// Asegúrate de cargar Firebase antes de ejecutar el código
 
 
 // Importa Firebase y Firestore
@@ -141,8 +140,8 @@ const app = initializeApp({
                       <img src="https://i.imgur.com/bXpaDeb.png"  />
                   </div>
                   <div class="container_popup_info">
-                      <p class="container_popup_info__title"> BIENVENIDO A COMSATEL <br />
-                      Líderes en rastreo vehicular y gestión de flotas <br />
+                      <p class="container_popup_info__title"> Bievenido a Loratech <br />
+                      Soluciones IoT para la industrias <br />
                           Registra tus datos y nos contáctaremos
                       </p>
                       <div class="container_popup_info__form">
@@ -236,7 +235,7 @@ const app = initializeApp({
                     //console.log("Enviando valores", data)
 
                 } catch (error) {
-                    //console.error('Error al guardar datos:', error);
+                    console.error('Error al guardar datos:', error);
                 }
             },
             display: () => {
@@ -867,7 +866,7 @@ const app = initializeApp({
                     //console.log("Enviando valores", data)
 
                 } catch (error) {
-                    //console.error('Error al guardar datos:', error);
+                    console.error('Error al guardar datos:', error);
                 }
             }
 
