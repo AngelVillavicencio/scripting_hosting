@@ -794,25 +794,29 @@ const app = initializeApp({
                 padding: 28px 37px;
                 height: 90vh;
                 overflow-y: scroll;
+                background-color: #fefefe;
+                border-bottom-right-radius: 32px;
+                border-top-right-radius: 32px;
             }
             .container_popup_info::-webkit-scrollbar {
-            width: 8px; /* Ancho del scroll */
+                width: 8px; /* Ancho del scroll */
+                height: 6px; /* Altura más estrecha */
             }
 
             /* Estilo del track del scroll */
             .container_popup_info::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Color de fondo del track */
+                background: #f1f1f1; /* Color de fondo del track */
             }
 
             /* Estilo del thumb (la parte móvil) del scroll */
             .container_popup_info::-webkit-scrollbar-thumb {
-            background: #888; /* Color del thumb */
-            border-radius: 6px; /* Bordes redondeados del thumb */
+                background: #888; /* Color del thumb */
+                border-radius: 6px; /* Bordes redondeados del thumb */
             }
 
             /* Cambiar el color del thumb cuando está siendo hover */
             .container_popup_info::-webkit-scrollbar-thumb:hover {
-            background: #555;
+                background: #555;
             }
 
             .close {
