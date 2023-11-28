@@ -1,6 +1,5 @@
 
 
-
 // Importa Firebase y Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
 import { getFirestore, addDoc, doc, collection, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
@@ -506,6 +505,7 @@ const app = initializeApp({
                 position: relative;
                 width: 100%;
                 padding: 22px 0px;
+                height: 85vh;
             }
 
             .container_popup_img{
@@ -780,7 +780,7 @@ const app = initializeApp({
             }
             .container_popup_img{
                 display: flex;
-                height: 100%;
+                height: 90vh;
                 width: 100%;
             }
             .container_popup_img img{
@@ -791,8 +791,30 @@ const app = initializeApp({
                 border-bottom-left-radius: 32px;
             }
             .container_popup_info{
-                padding: 48px 37px;
+                padding: 28px 37px;
+                height: 90vh;
+                overflow-y: scroll;
             }
+            .container_popup_info::-webkit-scrollbar {
+            width: 8px; /* Ancho del scroll */
+            }
+
+            /* Estilo del track del scroll */
+            .container_popup_info::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color de fondo del track */
+            }
+
+            /* Estilo del thumb (la parte móvil) del scroll */
+            .container_popup_info::-webkit-scrollbar-thumb {
+            background: #888; /* Color del thumb */
+            border-radius: 6px; /* Bordes redondeados del thumb */
+            }
+
+            /* Cambiar el color del thumb cuando está siendo hover */
+            .container_popup_info::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            }
+
             .close {
                 right: 4%;
                 top: 3%;
@@ -936,7 +958,7 @@ const app = initializeApp({
             botones.forEach(boton_submit => {
                 boton_submit.addEventListener("click", (e) => {
                     let informacion = {
-                        submit:"hizo_click_al_submit",
+                        submit: "hizo_click_al_submit",
                     }
                     saveDataToFirestore(informacion);
                     //console.log(informacion)
