@@ -140,7 +140,7 @@ const app = initializeApp({
                       <img src="https://i.imgur.com/bXpaDeb.png"  />
                   </div>
                   <div class="container_popup_info">
-                      <p class="container_popup_info__title"> Bievenido a Loratech <br />
+                      <p class="container_popup_info__title"> 
                       Soluciones IoT para las industrias <br />
                       </p>
                       <p class="container_popup_info__subtitle">
@@ -606,7 +606,7 @@ const app = initializeApp({
                 border-bottom: 1.5px solid #283342;
             }
             .info__form-inputcheck{
-                margin-top: 6px;
+                margin-top: 2px;
                 padding-top: 11px;
                     display: flex;
                 align-items: flex-start;
@@ -841,6 +841,8 @@ const app = initializeApp({
                 font-size: 18px;
                 line-height: 24px;
                 letter-spacing: -0.01em;
+                padding-bottom: 0.5em;
+                padding-top: 0.5em;
             }
             .info__form-inputcheck__text{
                 font-size: 16px;
