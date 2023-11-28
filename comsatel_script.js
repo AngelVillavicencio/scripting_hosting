@@ -961,40 +961,7 @@ const app = initializeApp({
 
 
 
-            //var path = window.location.pathname;
-
-            if (
-                //path !== "/" ||
-                !(sessionStorage.getItem("welcome_popup_close") === "true")
-            ) {
-                //if (!document.querySelector("#welcome_popup_container")) {
-                var body = document.querySelector("body");
-
-                body.insertAdjacentHTML("afterbegin", me.templates.modal);
-
-                me.fn.insertCss();
-
-                var btn_terms = document.querySelector("#btn_terms");
-
-                btn_terms.addEventListener("click", () => {
-                    body.insertAdjacentHTML(
-                        "afterbegin",
-                        me.globals.atmTerms.modalDataTreatment
-                    );
-                    var closeXTerm2 = document.querySelectorAll(
-                        "#atm-terms-data-treat #atm-terms-data-treat-close, #atm-terms-data-treat #atm-terms-data-treat-ok"
-                    );
-                    for (var i = 0; i < closeXTerm2.length; i++) {
-                        closeXTerm2[i].addEventListener("click", () => {
-                            document.querySelector("#atm-terms-data-treat").remove();
-                        });
-                    }
-                });
-
-                me.fn.initialVariablesAndListeners();
-
-            }
-
+        
 
 
 
