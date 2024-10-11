@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NFC Reader</title>
+  <title>NFC Reader - Captura completa</title>
 </head>
 <body>
-  <h1>Web NFC Reader</h1>
+  <h1>Web NFC Reader - Captura completa</h1>
   <button id="readNFC">Leer NFC</button>
-  <p id="output"></p>
+  <pre id="output"></pre>
 
   <script>
     const output = document.getElementById('output');
@@ -16,7 +16,6 @@
 
     readNFC.addEventListener('click', async () => {
       try {
-        // Verifica si el navegador soporta la API Web NFC
         if ('NDEFReader' in window) {
           const ndef = new NDEFReader();
           await ndef.scan();
@@ -24,14 +23,23 @@
 
           ndef.onreading = event => {
             const message = event.message;
+            let outputText = `Se detectó una tarjeta NFC con ${message.records.length} registros:\n\n`;
+
+            // Iterar sobre todos los registros encontrados
             for (const record of message.records) {
+              outputText += `Registro tipo: ${record.recordType}\n`;
+
+              // Verificar si es texto legible
               if (record.recordType === 'text') {
-                const textDecoder = new TextDecoder();
-                output.textContent = textDecoder.decode(record.data);
+                const textDecoder = new TextDecoder(record.encoding);
+                outputText += `Contenido del texto: ${textDecoder.decode(record.data)}\n\n`;
               } else {
-                output.textContent = 'Tipo de registro no compatible';
+                // Mostrar datos en formato hexadecimal para otros tipos de registros
+                const hexData = [...new Uint8Array(record.data)].map(b => b.toString(16).padStart(2, '0')).join(' ');
+                outputText += `Datos en hexadecimal: ${hexData}\n\n`;
               }
             }
+            output.textContent = outputText;
           };
         } else {
           output.textContent = 'API Web NFC no soportada en este navegador.';
