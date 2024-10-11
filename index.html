@@ -1,3 +1,45 @@
-<html>
-  <head></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFC Reader</title>
+</head>
+<body>
+  <h1>Web NFC Reader</h1>
+  <button id="readNFC">Leer NFC</button>
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById('output');
+    const readNFC = document.getElementById('readNFC');
+
+    readNFC.addEventListener('click', async () => {
+      try {
+        // Verifica si el navegador soporta la API Web NFC
+        if ('NDEFReader' in window) {
+          const ndef = new NDEFReader();
+          await ndef.scan();
+          output.textContent = 'Esperando lectura de NFC...';
+
+          ndef.onreading = event => {
+            const message = event.message;
+            for (const record of message.records) {
+              if (record.recordType === 'text') {
+                const textDecoder = new TextDecoder();
+                output.textContent = textDecoder.decode(record.data);
+              } else {
+                output.textContent = 'Tipo de registro no compatible';
+              }
+            }
+          };
+        } else {
+          output.textContent = 'API Web NFC no soportada en este navegador.';
+        }
+      } catch (error) {
+        output.textContent = `Error al leer NFC: ${error}`;
+      }
+    });
+  </script>
+</body>
 </html>
